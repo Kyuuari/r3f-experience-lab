@@ -7,6 +7,7 @@ type Props = {};
 
 const Experience = (props: Props) => {
   const { scale } = useControls({ scale: -2 });
+
   return (
     <>
       <Perf position={"top-left"} />
