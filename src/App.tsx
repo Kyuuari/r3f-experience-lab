@@ -6,7 +6,7 @@ import Overlay, { OverlayDark, OverlayLight } from "./components/Overlay";
 import { useControls } from "leva";
 import SampleScene from "./scenes/SampleScene";
 import Exploration from "./scenes/Exploration";
-import ScrollExploration from "./scenes/ScrollExploration";
+import ScrollExploration from "./scenes/scroll-exporation/ScrollExploration";
 
 function App() {
   const [scene, setScene] = useState("ScrollExploration");

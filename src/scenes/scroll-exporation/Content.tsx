@@ -43,7 +43,7 @@ export const Content = () => {
 
   return (
     <Scroll html>
-      <div className="w-screen text-black">
+      <div className="w-screen text-black select-none">
         <Section opacity={opacityFirstSection}>
           <h1 className="font-semibold font-serif text-2xl">Hello 👋</h1>
           <p className="text-gray-500">Welcome to the site</p>
