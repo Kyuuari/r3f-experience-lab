@@ -1,3 +1,6 @@
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
 html,
 body,
 #root {
@@ -10,4 +13,10 @@ body,
 body {
   background: #1f1f1f;
   overscroll-behavior: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.accent {
+  -webkit-text-stroke: 1px black;
+  color: transparent;
 }

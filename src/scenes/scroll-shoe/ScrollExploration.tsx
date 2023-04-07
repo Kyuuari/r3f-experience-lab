@@ -4,6 +4,7 @@ import Experience from "../../components/Experience";
 import { useControls } from "leva";
 import {
   Center,
+  Float,
   OrbitControls,
   OrthographicCamera,
   PerspectiveCamera,
@@ -15,6 +16,7 @@ import {
 import { Group, MathUtils, Mesh } from "three";
 import { Content } from "./Content";
 import gsap from "gsap";
+import { Shoe } from "./Shoe";
 
 type BoxProps = {
   position: Vector3;
@@ -23,19 +25,19 @@ type BoxProps = {
 
 type Props = {};
 
-const ScrollExplorationDream = (props: Props) => {
-  const controls = useControls({
-    backgroundColor: "#ffffff",
-  });
+const ScrollExplorationNike = (props: Props) => {
+  // const controls = useControls({
+  //   backgroundColor: "#ffffff",
+  // });
 
   // const { width: w, height: h } = useThree((state) => state.viewport);
 
   return (
     <>
       <OrthographicCamera position={[0, 0, -5]} />
-      {/* <OrbitControls enableZoom={false} enableRotate={false} /> */}
-      <color attach="background" args={[controls.backgroundColor]} />
-      <ScrollControls pages={3} damping={0.1} maxSpeed={0.5}>
+      <ambientLight />
+      <color attach="background" args={["#ffffff"]} />
+      <ScrollControls pages={3} damping={0.5} maxSpeed={0.3}>
         <Box position={[0, 0, 0]} />
         <Content />
       </ScrollControls>
@@ -43,7 +45,7 @@ const ScrollExplorationDream = (props: Props) => {
   );
 };
 
-export default ScrollExplorationDream;
+export default ScrollExplorationNike;
 
 function Box({ position }: BoxProps) {
   const meshRef = useRef<Group>(null!);
@@ -64,27 +66,28 @@ function Box({ position }: BoxProps) {
 
     tl.current.to(
       meshRef.current.rotation,
-      { duration: 1, x: 0, y: Math.PI / 2, z: 0 },
+      { duration: 1, x: 0, y: -Math.PI * 0.5, z: 0 },
       0
     );
 
-    //Normalize the viewport by dividing by 2
-    // tl.current.to(
-    //   meshRef.current.position,
-    //   { duration: 1, x: width / 2, y: -height / 2, z: 0 },
-    //   0.5
-    // );
-
     tl.current.to(
       meshRef.current.scale,
-      { duration: 1, x: 0.5, y: 0.5, z: 0.5 },
-      0.5
+      { duration: 1, x: 0.2, y: 0.2, z: 0.2 },
+      0.9
     );
 
-    const boxWidth = 1; // replace with the actual width of your box
-    const boxHeight = 1; // replace with the actual height of your box
+    const boxWidth = meshRef.current.scale.x; // replace with the actual width of your box
+    const boxHeight = meshRef.current.scale.y; // replace with the actual height of your box
     const xOffset = (width / 2 - boxWidth / 2) * meshRef.current.scale.x; // calculate the x offset
     const yOffset = (-height / 2 + boxHeight / 2) * meshRef.current.scale.y; // calculate the y offset
+
+    //Normalize the viewport by dividing by 2
+    tl.current.to(
+      meshRef.current.position,
+      { duration: 0.4, x: (-xOffset - boxWidth / 4) / 2 },
+      0.2
+    );
+
     tl.current.to(
       meshRef.current.position,
       {
@@ -93,17 +96,19 @@ function Box({ position }: BoxProps) {
         y: yOffset + boxHeight / 2,
         z: 0,
       },
-      0.5
+      0.9
     );
   }, []);
 
   return (
     <>
-      <group dispose={null} ref={meshRef}>
-        <mesh position={[0, 0, 0]}>
-          <boxGeometry args={[1, 1, 1]} />
-          <meshBasicMaterial />
-        </mesh>
+      <group dispose={null} ref={meshRef} rotation={[0.35, 2.25, 0]}>
+        <Float
+          rotationIntensity={1.25} // XYZ rotation intensity, defaults to 1
+          floatIntensity={2}
+        >
+          <Shoe scale={3} castShadow receiveShadow />
+        </Float>
       </group>
     </>
   );
