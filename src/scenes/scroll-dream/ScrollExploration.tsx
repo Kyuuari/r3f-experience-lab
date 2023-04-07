@@ -3,7 +3,9 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import Experience from "../../components/Experience";
 import { useControls } from "leva";
 import {
+  Center,
   OrbitControls,
+  OrthographicCamera,
   PerspectiveCamera,
   PresentationControls,
   Scroll,
@@ -21,37 +23,27 @@ type BoxProps = {
 
 type Props = {};
 
-const ScrollExploration = (props: Props) => {
+const ScrollExplorationDream = (props: Props) => {
   const controls = useControls({
     backgroundColor: "#ffffff",
   });
 
-  const { width: w, height: h } = useThree((state) => state.viewport);
+  // const { width: w, height: h } = useThree((state) => state.viewport);
 
   return (
     <>
-      {/* <PerspectiveCamera makeDefault position={[0, 0, 5]} /> */}
-      {/* <OrbitControls enableZoom={false} /> */}
+      <OrthographicCamera position={[0, 0, -5]} />
+      {/* <OrbitControls enableZoom={false} enableRotate={false} /> */}
       <color attach="background" args={[controls.backgroundColor]} />
-      <ScrollControls pages={3} damping={0.25}>
+      <ScrollControls pages={3} damping={0.1} maxSpeed={0.5}>
+        <Box position={[0, 0, 0]} />
         <Content />
-        <Scroll>
-          <Box position={[0, 0, 0]} />
-          <mesh position={[0, -h, 0]}>
-            <boxGeometry args={[1, 1, 1]} />
-            <meshBasicMaterial />
-          </mesh>
-          <mesh position={[0, -h * 2, 0]}>
-            <boxGeometry args={[1, 1, 1]} />
-            <meshBasicMaterial />
-          </mesh>
-        </Scroll>
       </ScrollControls>
     </>
   );
 };
 
-export default ScrollExploration;
+export default ScrollExplorationDream;
 
 function Box({ position }: BoxProps) {
   const meshRef = useRef<Group>(null!);
@@ -62,7 +54,10 @@ function Box({ position }: BoxProps) {
     tl.current.seek(scroll.offset * tl.current.duration());
   });
 
-  const { width: w, height: h } = useThree((state) => state.viewport);
+  const { width, height } = useThree((state) => state.viewport);
+  const { viewport, camera } = useThree();
+  // getCurrentViewport is a helper that calculates the size of the viewport
+  // const { width, height } = viewport.getCurrentViewport(camera, [0, 0, 0]);
 
   useLayoutEffect(() => {
     tl.current = gsap.timeline();
@@ -72,10 +67,33 @@ function Box({ position }: BoxProps) {
       { duration: 1, x: 0, y: Math.PI / 2, z: 0 },
       0
     );
+
+    //Normalize the viewport by dividing by 2
+    // tl.current.to(
+    //   meshRef.current.position,
+    //   { duration: 1, x: width / 2, y: -height / 2, z: 0 },
+    //   0.5
+    // );
+
     tl.current.to(
-      meshRef.current.rotation,
-      { duration: 1, x: 0, y: -Math.PI / 2, z: 0 },
-      1
+      meshRef.current.scale,
+      { duration: 1, x: 0.5, y: 0.5, z: 0.5 },
+      0.5
+    );
+
+    const boxWidth = 1; // replace with the actual width of your box
+    const boxHeight = 1; // replace with the actual height of your box
+    const xOffset = (width / 2 - boxWidth / 2) * meshRef.current.scale.x; // calculate the x offset
+    const yOffset = (-height / 2 + boxHeight / 2) * meshRef.current.scale.y; // calculate the y offset
+    tl.current.to(
+      meshRef.current.position,
+      {
+        duration: 1,
+        x: xOffset - boxWidth / 2,
+        y: yOffset + boxHeight / 2,
+        z: 0,
+      },
+      0.5
     );
   }, []);
 

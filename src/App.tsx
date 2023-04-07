@@ -7,14 +7,15 @@ import { useControls } from "leva";
 import SampleScene from "./scenes/SampleScene";
 import Exploration from "./scenes/Exploration";
 import ScrollExploration from "./scenes/scroll-exporation/ScrollExploration";
+import ScrollExplorationDream from "./scenes/scroll-dream/ScrollExploration";
 
 function App() {
-  const [scene, setScene] = useState("ScrollExploration");
+  const [scene, setScene] = useState("Dream");
 
   const controls = useControls({
     component: {
       value: scene,
-      options: ["Example", "Exploration", "ScrollExploration"],
+      options: ["Example", "Exploration", "ScrollExploration", "Dream"],
       onChange: (value) => {
         setScene(value);
       },
@@ -31,6 +32,7 @@ function App() {
           {scene === "Example" ? <SampleScene /> : null}
           {scene === "Exploration" ? <Exploration /> : null}
           {scene === "ScrollExploration" ? <ScrollExploration /> : null}
+          {scene === "Dream" ? <ScrollExplorationDream /> : null}
         </Canvas>
       </Suspense>
     </>
