@@ -10,12 +10,12 @@ import ScrollExploration from "./scenes/scroll-exporation/ScrollExploration";
 import ScrollExplorationNike from "./scenes/scroll-shoe/ScrollExploration";
 
 function App() {
-  const [scene, setScene] = useState("Shoe");
+  const [scene, setScene] = useState("Nike Exploration");
 
   const controls = useControls({
-    component: {
+    Explorations: {
       value: scene,
-      options: ["ScrollExploration", "Shoe"],
+      options: ["ScrollExploration", "Nike Exploration"],
       onChange: (value) => {
         setScene(value);
       },
@@ -32,7 +32,7 @@ function App() {
           {/* {scene === "Example" ? <SampleScene /> : null}
           {scene === "Exploration" ? <Exploration /> : null} */}
           {scene === "ScrollExploration" ? <ScrollExploration /> : null}
-          {scene === "Shoe" ? <ScrollExplorationNike /> : null}
+          {scene === "Nike Exploration" ? <ScrollExplorationNike /> : null}
         </Canvas>
       </Suspense>
     </>

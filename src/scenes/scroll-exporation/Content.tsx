@@ -19,7 +19,7 @@ const Section = (props: Props) => {
       }}
     >
       <div className="w-1/2 flex items-center justify-center">
-        <div className="max-w-sm w-full">
+        <div className="max-w-sm w-[100dvw]">
           <div className="bg-white  rounded-lg px-8 py-12">
             {props.children}
           </div>

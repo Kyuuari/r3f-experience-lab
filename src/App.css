@@ -8,11 +8,11 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  overscroll-behavior: none;
 }
 
 body {
   background: #1f1f1f;
-  overscroll-behavior: none;
   font-family: 'Inter', sans-serif;
 }
 
