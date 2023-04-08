@@ -1,10 +1,12 @@
 import { Canvas, Vector3, useFrame, useThree } from "@react-three/fiber";
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Experience from "../../components/Experience";
 import { useControls } from "leva";
 import {
   Center,
+  ContactShadows,
   Float,
+  Loader,
   OrbitControls,
   OrthographicCamera,
   PerspectiveCamera,
@@ -26,21 +28,24 @@ type BoxProps = {
 type Props = {};
 
 const ScrollExplorationNike = (props: Props) => {
-  // const controls = useControls({
-  //   backgroundColor: "#ffffff",
-  // });
-
-  // const { width: w, height: h } = useThree((state) => state.viewport);
-
   return (
     <>
-      <OrthographicCamera position={[0, 0, -5]} />
-      <ambientLight />
-      <color attach="background" args={["#ffffff"]} />
-      <ScrollControls pages={3} damping={0.5} maxSpeed={0.3}>
-        <Box position={[0, 0, 0]} />
-        <Content />
-      </ScrollControls>
+      <Canvas>
+        <OrbitControls
+          makeDefault
+          enableZoom={false}
+          enablePan={false}
+          enableRotate={false}
+          position={[0, 0, -2]}
+        />
+        <ambientLight />
+        <color attach="background" args={["#ffffff"]} />
+        <ScrollControls pages={3} damping={0.5} maxSpeed={0.3}>
+          <Box position={[0, 0, 0]} />
+          <Content />
+        </ScrollControls>
+      </Canvas>
+      <Loader />
     </>
   );
 };

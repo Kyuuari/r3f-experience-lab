@@ -8,14 +8,15 @@ import SampleScene from "./scenes/SampleScene";
 import Exploration from "./scenes/Exploration";
 import ScrollExploration from "./scenes/scroll-exporation/ScrollExploration";
 import ScrollExplorationNike from "./scenes/scroll-shoe/ScrollExploration";
+import VideoExploration from "./scenes/video-exploration/VideoExploration";
 
 function App() {
-  const [scene, setScene] = useState("Nike Exploration");
+  const [scene, setScene] = useState("Television Exploration");
 
   const controls = useControls({
     Explorations: {
       value: scene,
-      options: ["ScrollExploration", "Nike Exploration"],
+      options: ["Nike Exploration", "Television Exploration"],
       onChange: (value) => {
         setScene(value);
       },
@@ -25,16 +26,15 @@ function App() {
   return (
     <>
       <Overlay />
-      <Suspense fallback={null}>
-        <Canvas>
-          {/* <Stage1 visible={stage === 1} /> */}
-          {/* <SampleScene visible={}/> */}
-          {/* {scene === "Example" ? <SampleScene /> : null}
+      {/* <Suspense fallback={<div>Loading ...</div>}> */}
+      {/* <Stage1 visible={stage === 1} /> */}
+      {/* <SampleScene visible={}/> */}
+      {/* {scene === "Example" ? <SampleScene /> : null}
           {scene === "Exploration" ? <Exploration /> : null} */}
-          {scene === "ScrollExploration" ? <ScrollExploration /> : null}
-          {scene === "Nike Exploration" ? <ScrollExplorationNike /> : null}
-        </Canvas>
-      </Suspense>
+      {/* {scene === "ScrollExploration" ? <ScrollExploration /> : null} */}
+      {scene === "Nike Exploration" ? <ScrollExplorationNike /> : null}
+      {scene === "Television Exploration" ? <VideoExploration /> : null}
+      {/* </Suspense> */}
     </>
   );
 }

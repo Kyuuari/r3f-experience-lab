@@ -29,9 +29,8 @@ const ScrollExploration = (props: Props) => {
   const { width: w, height: h } = useThree((state) => state.viewport);
 
   return (
-    <>
-      {/* <PerspectiveCamera makeDefault position={[0, 0, 5]} /> */}
-      {/* <OrbitControls enableZoom={false} /> */}
+    <Canvas>
+      <OrbitControls makeDefault enableZoom={false} />
       <color attach="background" args={[controls.backgroundColor]} />
       <ScrollControls pages={3} damping={0.25}>
         <Content />
@@ -47,7 +46,7 @@ const ScrollExploration = (props: Props) => {
           </mesh>
         </Scroll>
       </ScrollControls>
-    </>
+    </Canvas>
   );
 };
 
