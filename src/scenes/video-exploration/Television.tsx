@@ -55,4 +55,4 @@ export function Television(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/television_edit.gltf");
+useGLTF.preload("models/television_edit/television_edit.gltf");
