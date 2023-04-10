@@ -19,6 +19,7 @@
   -webkit-text-size-adjust: 100%;
 
   overscroll-behavior: none;
+  overflow: hidden;
 }
 
 a {
