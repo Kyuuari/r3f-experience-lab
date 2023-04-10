@@ -25,13 +25,13 @@ const ScrollExplorationNike = (props: Props) => {
   return (
     <>
       <Canvas>
-        <OrbitControls
+        {/* <OrbitControls
           makeDefault
           enableZoom={false}
           enablePan={false}
           enableRotate={false}
           position={[0, 0, -2]}
-        />
+        /> */}
         <ambientLight />
         <color attach="background" args={["#ffffff"]} />
         <ScrollControls pages={3} damping={0.5} maxSpeed={0.3}>
