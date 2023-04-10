@@ -3,15 +3,9 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Experience from "../../components/Experience";
 import { useControls } from "leva";
 import {
-  Center,
-  ContactShadows,
   Float,
   Loader,
   OrbitControls,
-  OrthographicCamera,
-  PerspectiveCamera,
-  PresentationControls,
-  Scroll,
   ScrollControls,
   useScroll,
 } from "@react-three/drei";
