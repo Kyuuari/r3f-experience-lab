@@ -40,9 +40,6 @@ export const Content = () => {
   return (
     <Scroll html>
       <div className="w-screen text-black">
-        <p className="text-gray-500 font-normal text-xs">
-          *Disclaimer not a real site - for showcase purposes only.
-        </p>
         <Section opacity={opacityFirstSection}>
           <div className="font-bold font-sans flex flex-col absolute top-20 left-30">
             <h1>| NIKE AIR</h1>
@@ -53,7 +50,8 @@ export const Content = () => {
           <h1 className="absolute right-6 font-thin">| 36</h1>
         </Section>
         <Section right opacity={opacitySecondSection}>
-          <h1 className=" font-bold font-sans flex">"COMFORT"</h1>
+          <img src="https://images.pexels.com/photos/3621183/pexels-photo-3621183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+          <h1 className=" font-bold font-sans flex">COMFORT</h1>
           <p className="text-gray-500">
             The Air Zoom Pegasus features a responsive cushioning system that
             absorbs impact and bounces back to propel you forward. The Nike Zoom
@@ -64,7 +62,7 @@ export const Content = () => {
           <p className="animate-bounce  mt-6">↓</p>
         </Section>
         <Section opacity={opacityLastSection}>
-          <h1 className=" font-bold font-sans">"Ready"</h1>
+          <h1 className=" font-bold font-sans">ACTIVE</h1>
           <p className="text-gray-500">
             Whether you're training for a race or simply looking for a
             comfortable and reliable shoe for your daily runs, the Nike Air Zoom
@@ -77,6 +75,10 @@ export const Content = () => {
               Add to Bag
             </button>
           </div>
+          <img src="https://images.pexels.com/photos/2530125/pexels-photo-2530125.jpeg?auto=compress&cs=tinysrgb&w=800" />
+          <p className="text-gray-500 font-normal text-xs">
+            *Disclaimer not a real site - for showcase purposes only.
+          </p>
         </Section>
       </div>
     </Scroll>

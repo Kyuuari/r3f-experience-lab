@@ -7,6 +7,7 @@ import {
   OrbitControls,
   OrthographicCamera,
   PerspectiveCamera,
+  Scroll,
   ScrollControls,
   useScroll,
 } from "@react-three/drei";
@@ -20,6 +21,7 @@ import {
   Scanline,
   Selection,
 } from "@react-three/postprocessing";
+import { AiOutlineArrowDown } from "react-icons/ai";
 import { gsap } from "gsap";
 
 type Props = {};
@@ -33,8 +35,8 @@ const VideoExploration = (props: Props) => {
         <color attach="background" args={["#000000"]} />
         <ScrollControls pages={3} damping={0.3}>
           <Items />
+          <Content />
         </ScrollControls>
-
         <EffectComposer>
           <Scanline />
           <Bloom intensity={1} />
@@ -108,3 +110,68 @@ function Items() {
     </>
   );
 }
+
+const Content = () => {
+  return (
+    <Scroll html>
+      <section className="flex h-[100dvh] items-end w-[100dvw] justify-center">
+        <div className="items-end justify-center text-center m-10">
+          <p>Scroll</p>
+          <AiOutlineArrowDown
+            size={25}
+            className={`m-5 animate-bounce fill-white hover:text-opacity-40`}
+          />
+        </div>
+      </section>
+      <Section right>
+        <p>
+          The first live television broadcast in the United States occurred on
+          April 30, 1939, when NBC broadcast a performance of the opera "Carmen"
+          from the Metropolitan Opera House in New York City. The broadcast was
+          viewed by approximately 1,000 people who had television sets in the
+          New York City area. Over the next few years, the number of television
+          sets in homes across the country grew rapidly, and by the early 1950s,
+          television had become a staple of American culture.
+        </p>
+      </Section>
+      <Section right>
+        <p>
+          The Super Bowl is the most watched television event in the United
+          States, with more than 100 million viewers tuning in each year. The
+          first Super Bowl was played on January 15, 1967, between the Green Bay
+          Packers and the Kansas City Chiefs. At that time, the Super Bowl was
+          not the cultural phenomenon that it is today, and many of the seats at
+          the Los Angeles Memorial Coliseum were empty. However, over the years,
+          the Super Bowl has grown in popularity, and it is now one of the most
+          anticipated events of the year. In addition to the game itself, the
+          Super Bowl is known for its elaborate halftime shows and its
+          commercials, which are some of the most expensive and creative on
+          television.
+        </p>
+      </Section>
+    </Scroll>
+  );
+};
+
+interface SectionProps {
+  right?: boolean;
+  opacity?: number;
+  children?: React.ReactNode;
+}
+
+const Section = (props: SectionProps) => {
+  return (
+    <section
+      className={`h-[100dvh] flex flex-col justify-center p-10 ${
+        props.right ? "items-end" : "items-start"
+      } `}
+      style={{
+        opacity: props.opacity,
+      }}
+    >
+      <div className="lg:w-1/2 flex items-center justify-center">
+        <div className="max-w-sm w-full text-white">{props.children}</div>
+      </div>
+    </section>
+  );
+};
