@@ -18,10 +18,12 @@ const AIWorldExploration = (props: Props) => {
     <>
       <Canvas>
         <OrbitControls
-          //   enableZoom={false}
-          //   enablePan={false}
+          enableZoom={false}
+          enablePan={false}
           makeDefault
           position={[0, 0, 0]}
+          autoRotate
+          autoRotateSpeed={0.5}
         />
         <World />
         {/* <Text>Hello World</Text> */}
