@@ -9,6 +9,7 @@ import Exploration from "./scenes/Exploration";
 import ScrollExploration from "./scenes/scroll-exporation/ScrollExploration";
 import ScrollExplorationNike from "./scenes/scroll-shoe/ScrollExploration";
 import VideoExploration from "./scenes/video-exploration/VideoExploration";
+import AIWorldExploration from "./scenes/ai-worlds/AIWorldExploration";
 
 function App() {
   const [scene, setScene] = useState("Television Exploration");
@@ -16,7 +17,11 @@ function App() {
   const controls = useControls({
     Explorations: {
       value: scene,
-      options: ["Nike Exploration", "Television Exploration"],
+      options: [
+        "Nike Exploration",
+        "Television Exploration",
+        "AI World Exploration",
+      ],
       onChange: (value) => {
         setScene(value);
       },
@@ -34,6 +39,7 @@ function App() {
       {/* {scene === "ScrollExploration" ? <ScrollExploration /> : null} */}
       {scene === "Nike Exploration" ? <ScrollExplorationNike /> : null}
       {scene === "Television Exploration" ? <VideoExploration /> : null}
+      {scene === "AI World Exploration" ? <AIWorldExploration /> : null}
       {/* </Suspense> */}
     </>
   );
