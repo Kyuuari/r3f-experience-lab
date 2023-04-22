@@ -1,18 +1,13 @@
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import Experience from "./components/Experience";
-import { Canvas } from "@react-three/fiber";
-import Overlay, { OverlayDark, OverlayLight } from "./components/Overlay";
+import Overlay from "./components/Overlay";
 import { useControls } from "leva";
-import SampleScene from "./scenes/SampleScene";
-import Exploration from "./scenes/Exploration";
-import ScrollExploration from "./scenes/scroll-exporation/ScrollExploration";
 import ScrollExplorationNike from "./scenes/scroll-shoe/ScrollExploration";
 import VideoExploration from "./scenes/video-exploration/VideoExploration";
 import AIWorldExploration from "./scenes/ai-worlds/AIWorldExploration";
 
 function App() {
-  const [scene, setScene] = useState("Television Exploration");
+  const [scene, setScene] = useState("Nike Exploration");
 
   const controls = useControls({
     Explorations: {

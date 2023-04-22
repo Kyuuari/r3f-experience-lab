@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.1.4 -t public/models/television_edit/television_edit.gltf
 */
 
 import * as THREE from "three";
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
@@ -30,7 +30,7 @@ export function Television(props: JSX.IntrinsicElements["group"]) {
       loop: true,
     })
   );
-  const texture = useVideoTexture("assets/abstract.mp4", { loop: true });
+  const texture = useVideoTexture("src/assets/abstract.mp4", { loop: true });
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -38,10 +38,7 @@ export function Television(props: JSX.IntrinsicElements["group"]) {
         material={materials.Television_01}
       />
 
-      <mesh
-        geometry={nodes.Screen.geometry}
-        // material={materials.Television_01}
-      >
+      <mesh geometry={nodes.Screen.geometry}>
         <meshPhysicalMaterial
           clearcoat={1}
           clearcoatRoughness={0}

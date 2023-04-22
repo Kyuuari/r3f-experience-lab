@@ -1,14 +1,5 @@
-import {
-  Grid,
-  Html,
-  Loader,
-  OrbitControls,
-  PivotControls,
-  useTexture,
-  Text,
-} from "@react-three/drei";
+import { Loader, OrbitControls, useTexture } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React from "react";
 import * as THREE from "three";
 
 type Props = {};
@@ -26,7 +17,6 @@ const AIWorldExploration = (props: Props) => {
           autoRotateSpeed={0.5}
         />
         <World />
-        {/* <Text>Hello World</Text> */}
       </Canvas>
       <Loader />
     </>

@@ -1,16 +1,13 @@
 import { Canvas, Vector3, useFrame, useThree } from "@react-three/fiber";
-import React, { useLayoutEffect, useRef, useState } from "react";
-import Experience from "../../components/Experience";
+import React, { useLayoutEffect, useRef } from "react";
 import { useControls } from "leva";
 import {
   OrbitControls,
-  PerspectiveCamera,
-  PresentationControls,
   Scroll,
   ScrollControls,
   useScroll,
 } from "@react-three/drei";
-import { Group, MathUtils, Mesh } from "three";
+import { Group } from "three";
 import { Content } from "./Content";
 import gsap from "gsap";
 
