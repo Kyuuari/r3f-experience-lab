@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.1.4 -t public/models/television_edit/television_edit.gltf
 */
 
 import * as THREE from "three";
-import { useState } from "react";
+// import { useState } from "react";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
@@ -23,14 +23,15 @@ export function Television(props: JSX.IntrinsicElements["group"]) {
     "models/television_edit/television_edit.gltf"
   ) as GLTFResult;
 
-  const [video] = useState(() =>
-    Object.assign(document.createElement("video"), {
-      src: "",
-      crossOrigin: "Anonymous",
-      loop: true,
-    })
-  );
-  const texture = useVideoTexture("src/assets/abstract.mp4", { loop: true });
+  // const [video] = useState(() =>
+  //   Object.assign(document.createElement("video"), {
+  //     src: "",
+  //     crossOrigin: "Anonymous",
+  //     loop: true,
+  //   })
+  // );
+
+  const texture = useVideoTexture("assets/abstract.mp4", { loop: true });
   return (
     <group {...props} dispose={null}>
       <mesh

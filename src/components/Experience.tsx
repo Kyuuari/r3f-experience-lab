@@ -1,7 +1,6 @@
 import { Grid, OrbitControls } from "@react-three/drei";
 import { useControls } from "leva";
 import { Perf } from "r3f-perf";
-import React from "react";
 
 type Props = {};
 

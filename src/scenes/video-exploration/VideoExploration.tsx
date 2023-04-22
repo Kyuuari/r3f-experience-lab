@@ -1,12 +1,7 @@
 import {
   Center,
-  ContactShadows,
-  Environment,
   Loader,
   MeshReflectorMaterial,
-  OrbitControls,
-  OrthographicCamera,
-  PerspectiveCamera,
   Scroll,
   ScrollControls,
   useScroll,
@@ -17,9 +12,8 @@ import { Television } from "./Television";
 import {
   Bloom,
   EffectComposer,
-  Outline,
+  Glitch,
   Scanline,
-  Selection,
 } from "@react-three/postprocessing";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { gsap } from "gsap";
@@ -39,6 +33,7 @@ const VideoExploration = (props: Props) => {
         </ScrollControls>
         <EffectComposer>
           <Scanline />
+          <Glitch />
           <Bloom intensity={1} />
         </EffectComposer>
       </Canvas>
@@ -124,6 +119,7 @@ const Content = () => {
         </div>
       </section>
       <Section right>
+        <h1 className="text-3xl font-extrabold">Hello</h1>
         <p>
           The first live television broadcast in the United States occurred on
           April 30, 1939, when NBC broadcast a performance of the opera "Carmen"

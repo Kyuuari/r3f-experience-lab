@@ -1,6 +1,3 @@
-import { Canvas } from "@react-three/fiber";
-import React from "react";
-import Experience from "../components/Experience";
 import { useControls } from "leva";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 
